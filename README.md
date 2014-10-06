@@ -1,0 +1,4 @@
+scattergoriesGame
+=================
+
+Imitation Scattergories Game
