@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html ng-app="scattergoriesApp">
+
+<head>
+	<title>Scattergories</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+
+
+<!-- Begin Body -->
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar"></div>
+Create Game
+Join Game
+
+Username/Picture
+
+<p></p>
+
+
+<!-- Container for All Views -->
+<div class="container" ng-view></div>
+
+
+
+
+
+<!-- Sources Linking to Outer CDNS -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/1.1.0/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+
+<!-- Internal Script Sources -->
+<script src="app/scattergoriesApp.js"></script>
+<script src='views/login/loginCtrl.js'></script>
+<script src='views/login/loginService.js'></script>
+<script src='views/player/playerCtrl.js'></script>
+<script src='views/player/playerService.js'></script>
+
+</body>
+
+
+</html>
