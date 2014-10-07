@@ -3,17 +3,22 @@
 
 	<div>
 			<label>List Label</label>
-			<input ng-model="playerAnswer"></input>
+			<input ></input>
 			<button ng-click="submitAnswer()">submit</button>
-			<div>{{playerAnswer}}</div>
+			
 
 			<p></p>
-			<div ng-repeat='gameQuestion in gameQuestions'> {{gameQuestion.$value}} 
-				<form>
-					<input ng-model="playerList.$add"></input>   <!-- Use the add property to add to an answer array, 
+			<div  ng-repeat='gameQuestion in gameQuestions' > {{gameQuestion.$value}} 
+				<div>
+					<form >
+					
+						<input ng-model="gameQuestion.answer" ng-change="gameQuestions.$save(gameQuestion.answer)" ></input>   <!-- Use the add property to add to an answer array, 
 					the problem right now is trying to tie ng-model to all of the repeats . . .-->
-				</form>
+
+					</form>
+				</div>
 			</div>
+			
 
 			
 

@@ -1,9 +1,15 @@
 var app = angular.module('scattergoriesApp');
 
-app.controller('loginCtrl', function($scope, loginService, $location){
+app.controller('loginCtrl', function($scope, loginService, $location, $q){
 
 	$scope.login = function() {
+		debugger;
 		loginService.firebaseLogin();
+		
+			//$location.path('/player');
+			console.log(authData);
+		
+
 
 		// loginService.firebaseLogin().authWithOAuthPopup("google", function(error, authData) {
 		// 	console.log(error);
