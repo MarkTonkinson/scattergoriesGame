@@ -1,28 +1,40 @@
-<div>
-	Hello {{username}}
+<link rel="stylesheet" href="views/player/playerstyles.css">
+<div class="row">
+	<div class="col-md-4">
+		<p>Hello {{username}}</p>
+		<img src={{image}}>
+		<p ng-repeat="user in users">{{users.$uid}}</p>
 
-	<div>
-			<label>List Label</label>
-			<input ></input>
-			<button ng-click="submitAnswer()">submit</button>
-			
+		<div>
+				<label>List Label</label>
+				<input ></input>
+				<button ng-click="submitAnswer()">submit</button>
+				
 
-			<p></p>
-			<div  ng-repeat='gameQuestion in gameQuestions' > {{gameQuestion.$value}} 
-				<div>
-					<form >
-					
-						<input ng-model="gameQuestion.answer" ng-change="gameQuestions.$save(gameQuestion.answer)" ></input>   <!-- Use the add property to add to an answer array, 
-					the problem right now is trying to tie ng-model to all of the repeats . . .-->
+				<p></p>
+				<div  ng-repeat='gameQuestion in gameQuestions'> {{gameQuestion.$value}} 
+					<div>
+						<form >
+						
+							<input ng-model="player.answer" ng-change="gameQuestions.$save(gameQuestion.answer)" ></input>   <!-- Use the add property to add to an answer array, 
+						the problem right now is trying to tie ng-model to all of the repeats . . .-->
 
-					</form>
+						</form>
+					</div>
 				</div>
-			</div>
-			
-
-			
-
-
+				<!-- player/game/playerid/gameid- save to player id for that game id -->
 		
+		</div>
+	</div>
+
+	<div class="col-md-2"></div>
+
+	<div class='col-md-4'>
+
+		<timer interval="1000" countdown="120">{{countdown}}</timer>
+		<p>Answers</p>
+
+
+
 	</div>
 </div>

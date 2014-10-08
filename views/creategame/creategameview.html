@@ -1,11 +1,31 @@
 <div>
-	Create New Game
+	<h2 class="col-md-12">Create New Game</h2>
 	
-	<select placeholder="lists">
-		<option>List 14</option>
-	</select>
+	<div class="row">
+		<!-- Create Game Tools -->
+		<div class="col-md-4">
+			<input ng-model="newGame.gameTitle" placeholder="Game title"></input>
+			
+			<form role="form">
+				<select class="form-control" placeholder="lists">
+					<option value="list13">List 13</option>
+					<option value="list14">List 14</option>
+				</select>
+			</form>
 
-	<button>Ready for Players</button>
+			<button ng-click="moveToJoinGame()">Ready for Players</button>
+		</div>
 
+
+		<!-- divider -->
+		<div class="col-md-2"></div>
+
+
+
+
+		<!-- Show Game List Selected -->
+		<div class="col-md-4">
+			<div  ng-repeat='gameQuestion in gameQuestions'> {{gameQuestion.$value}} </div>
+		</div>
 
 </div>

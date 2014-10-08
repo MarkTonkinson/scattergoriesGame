@@ -4,6 +4,8 @@
 <head>
 	<title>Scattergories</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="indexpage.css">
+	
 </head>
 
 
@@ -11,16 +13,27 @@
 <body>
 
 <!-- Navigation Bar -->
-<div class="navbar"></div>
-Create Game
-Join Game
+<div class="customNav">
+	<h2>Scattergories</h2>
 
-Username/Picture
+	<div class="col-md-12"></div>
 
-<p></p>
+	<a class="col-md-2" href="#/create">Create Game</a>
+
+	<a class="col-md-2" href="#/joingame">Join Game</a>
+	<div class="col-md-6"></div>
+
+	<div ng-controller='googleDirCtrl'>Username/Picture
+		<div googleUserInfoDirective></div>
+	</div>
+
+</div>
+<div class='col-md-12 dividing-line'></div>
 
 
 <!-- Container for All Views -->
+<p></p>
+<p></p>
 <div class="container" ng-view></div>
 
 
@@ -39,6 +52,12 @@ Username/Picture
 <script src='views/login/loginService.js'></script>
 <script src='views/player/playerCtrl.js'></script>
 <script src='views/player/playerService.js'></script>
+<script src='app/googleUserInfoDirective.js'></script>
+<script src='views/creategame/createGameCtrl.js'></script>
+<script src='views/creategame/creategameService.js'></script>
+<script src='views/joingame/joingameCtrl.js'></script>
+<script src='app/directives/timer.js'></script>
+
 
 </body>
 

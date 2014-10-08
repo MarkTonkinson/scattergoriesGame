@@ -1,13 +1,28 @@
 var app = angular.module('scattergoriesApp');
 
-app.controller('loginCtrl', function($scope, loginService, $location, $q){
+app.controller('loginCtrl', function($scope, loginService, $location){
 
-	$scope.login = function() {
-		debugger;
-		loginService.firebaseLogin();
+	$scope.login = function(){
+		loginService.firebaseLogin().then(function(data){
+			$location.path('/joingame');
+		});
+	}
 		
-			//$location.path('/player');
-			console.log(authData);
+	
+	//Things I've tried
+	/*Resolve in the Service
+	Resolve in the router
+	Pause with if statements in the controller and the service*/
+			
+		
+			
+		//$location.path('/player');
+
+		
+
+
+		
+						//console.log(authData);
 		
 
 
@@ -18,6 +33,6 @@ app.controller('loginCtrl', function($scope, loginService, $location, $q){
 			
 		//how to make it pause- need a resolve from google . . .
 		
-	}
+	
 
 })
