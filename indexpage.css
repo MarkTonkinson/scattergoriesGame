@@ -1,0 +1,28 @@
+html{
+	margin: 15px;
+}
+
+body{
+	background-color: rgba(255,0,0,1);
+	color:black;
+
+}
+
+a {
+	color:black;
+	text-decoration: none;
+}
+
+.customNav {
+	background-color: white; 
+}
+
+img {
+	height:50px;
+	width: 50px;
+}
+.dividing-line {
+	border-bottom: 2px solid black;
+}
+
+
