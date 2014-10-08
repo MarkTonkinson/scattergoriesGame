@@ -6,15 +6,12 @@ app.config(['$routeProvider', function($routeProvider){
 		templateUrl: 'views/login/loginview.html',
 		controller: 'loginCtrl' 
 	})
-	.when('/player', {
+	.when('/player/:userId', {
 		templateUrl: 'views/player/playerview.html',
 		controller: 'playerCtrl',
 		resolve: {
-			gameList: function(playerService, $route) {
-				return playerService.getGameList(listId);
-			},
-			playerData: function(playerService){
-				return playerService.getPlayerData();
+			gameList: function(playerService) {
+				return playerService.getGameList();
 			}
 		}
 	})
@@ -26,8 +23,8 @@ app.config(['$routeProvider', function($routeProvider){
 		templateUrl: 'views/creategame/creategameview.html',
 		controller: 'creategameCtrl',
 		resolve: {
-			gameList: function(playerService, $route) {
-				return playerService.getGameList($route.listId);
+			gameList: function(playerService) {
+				return playerService.getGameList();
 			}
 		}
 	})
@@ -40,3 +37,16 @@ app.config(['$routeProvider', function($routeProvider){
 	})
 
 }]);
+//this is how to protect the routes . . .
+
+app.run(function($rootScope, $location){ //removed env service
+  $rootScope.$on('$routeChangeStart', function(event, next, current){ //these parameters are taking in the root scope, the location, and the enviroment service- the root scope is the event- and we've picked the routechangestart as the event to watch with the $on, the location the place to go next and environment service determining the current location based on whether it can get username I believe
+    var dataRef = new Firebase('https://mtscattergories.firebaseio.com');
+	var authData = dataRef.getAuth();
+	if (authData === null) {
+      $location.path('/login');
+    } // else {
+    //   $rootScope.username = ; //replaced environmentService with current to see if it would get passed through
+    // }
+  })
+});

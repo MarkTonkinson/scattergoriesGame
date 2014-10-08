@@ -1,36 +1,89 @@
 var app = angular.module('scattergoriesApp');
 
-app.controller('playerCtrl', function($scope, gameList, playerData, $firebase, $location){ //game list is from resolve in app
-	$scope.username;
+app.controller('playerCtrl', function($scope, gameList, $firebase, $location, playerService){ //game list is from resolve in app
 	
-	var ref = new Firebase("https://mtscattergories.firebaseio.com/playerAnswer/");
-  	var sync = $firebase(ref);
-  	$scope.playerAnswers = sync.$asArray();
+	$scope.$on('timer-stopped', function (event){ //this broke after adding other things on this page . . . 
+    	$scope.$apply(function(){ 
+
+    		$location.path('/compare');
+    		$scope.submitPlayerAnswers();
+    	});
+    }); //apply forces it to work anyway - super wierd that it stopped
+
+	
+	
+	
+//this grabs the user info from the service
+	$scope.userName = playerService.getUserName();
+	$scope.userImage = playerService.getUserImage();
+	$scope.uid = playerService.getUid();
+
+	
+	
+	
+
+	//this grabs the game list through the resolve on the routes
+	$scope.gameQuestions = gameList.$asArray();  //need to make this dynamic
+
+
+
+
+	//this was for getting answers
+	$scope.loopOverAnswers = function() {
+		
+		
+		
+	}
+
+	
+    var ref = new Firebase("https://mtscattergories.firebaseio.com/playerAnswersTest/" + $scope.getUid);
+    var test = $firebase(ref).$asArray();
+    test.$add();
+    $scope.test=test;
+
+
+        $scope.submitPlayerAnswers = function() {
+        	var answers = $scope.myAnswer;
+        	var ref = new Firebase("https://mtscattergories.firebaseio.com/playerAnswers/" + $scope.getUid);
+  			var list = $firebase(ref).$asArray();
+			list.$add({what: 'hello', who: 'me', player: answers})
+        	
+        }
+
+
+	// var ref = new Firebase("https://mtscattergories.firebaseio.com/playerAnswer/");
+ //  	var sync = $firebase(ref);
+ //  	$scope.playerAnswers = sync.$asArray();
 	
 
 	
-	//this grabs the game list through the resolve on the routes
-	$scope.gameQuestions = gameList.$asArray();
+
 	
 	//this tells the page to go to the compare page when the timer stops
- 	$scope.$on('timer-stopped', function (event){
-    	$location.path('/compare');
-    });
+ 	
 
+
+
+
+});
 
 //this is mostly showing me the data at the minute
-	var users = $firebase(new Firebase('https://mtscattergories.firebaseio.com/users')).$asObject();
-        	console.log("loaded record", users);
+	// var users = $firebase(new Firebase('https://mtscattergories.firebaseio.com/users')).$asObject();
+ //        	console.log("loaded record", users);
 
-    users.$bindTo($scope, "users");
+ //    users.$bindTo($scope, "users");
 
-//This should go in the directive
-	var dataRef = new Firebase('https://mtscattergories.firebaseio.com');
-	var authData = dataRef.getAuth();
-	if (authData) {
-	  $scope.username =  authData.google.displayName;
-	  $scope.image = authData.google.cachedUserProfile.picture;
-	}
+
+
+
+//This should go in the directive  or into a service to call repeatedly . . .
+	// var dataRef = new Firebase('https://mtscattergories.firebaseio.com');
+	// var authData = dataRef.getAuth();
+	// if (authData) {
+	//   $scope.username =  authData.google.displayName;
+	//   $scope.image = authData.google.cachedUserProfile.picture;
+	//   $scope.uid = authData.uid.replace('google:','');
+	// }
 
 	// var userInfo = $firebase(new Firebase('https://mtscattergories.firebaseio.com/'));
  //    var authData = auth.uid;
@@ -47,5 +100,3 @@ app.controller('playerCtrl', function($scope, gameList, playerData, $firebase, $
 	
 	// 	$scope.playerAnswers.$add({text: text});
 	// }
-
-});

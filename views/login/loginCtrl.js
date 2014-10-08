@@ -4,6 +4,7 @@ app.controller('loginCtrl', function($scope, loginService, $location){
 
 	$scope.login = function(){
 		loginService.firebaseLogin().then(function(data){
+			console.log(data);
 			$location.path('/joingame');
 		});
 	}

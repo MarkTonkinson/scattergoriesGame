@@ -6,12 +6,16 @@
 		<div class="col-md-4">
 			<input ng-model="newGame.gameTitle" placeholder="Game title"></input>
 			
-			<form role="form">
-				<select class="form-control" placeholder="lists">
-					<option value="list13">List 13</option>
-					<option value="list14">List 14</option>
+			<!-- <form role="form">
+				<select ng-model="selectedList" ng-options="list as list.name for list in lists" class="form-control">
+					<option>{{list.name}}</option>
+					
 				</select>
-			</form>
+			</form> -->
+
+			<p>Choose a game list</p>
+			<li><button ng-click="showList13=true; showList14=false">List 13</button></li>
+			<li><button ng-click="showList14=true; showList13=false">List 14</button></li>
 
 			<button ng-click="moveToJoinGame()">Ready for Players</button>
 		</div>
@@ -24,8 +28,12 @@
 
 
 		<!-- Show Game List Selected -->
-		<div class="col-md-4">
-			<div  ng-repeat='gameQuestion in gameQuestions'> {{gameQuestion.$value}} </div>
+		<div ng-show="showList13" class="col-md-4">
+			<div  ng-repeat='gameQuestion in gameQuestions13'> {{gameQuestion.$value}} </div>
+		</div>
+
+		<div ng-show="showList14" class="col-md-4">
+			<div  ng-repeat='gameQuestion in gameQuestions14'> {{gameQuestion.$value}} </div>
 		</div>
 
 </div>

@@ -1,9 +1,9 @@
 var app = angular.module('scattergoriesApp');
 
-app.controller('joingameCtrl', function($scope, $location){
+app.controller('joingameCtrl', function($scope, $location, playerService){
 	$scope.ifCreator = true; // set this with the user
 	$scope.startGame = function(){
-		$location.path('/player');
+		$location.path('/player/' + playerService.getUid());
 	}
 
 	$scope.generateLetter = function() { //now how do I make this so that the letter transfers to the player view when the start game is clicked?- this should really be in join game or maybe a service?  Would the random number run for every player?  Quite possibly . . .
