@@ -17,7 +17,12 @@ app.config(['$routeProvider', function($routeProvider){
 	})
 	.when('/joingame', {
 		templateUrl: 'views/joingame/joingame.html', 
-		controller: 'joingameCtrl'
+		controller: 'joingameCtrl',
+		resolve: {
+			game: function(creategameService){
+				return creategameService.getGameList();
+			}
+		}
 	})
 	.when('/create', {
 		templateUrl: 'views/creategame/creategameview.html',

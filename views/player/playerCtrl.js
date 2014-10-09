@@ -4,7 +4,6 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 	
 	$scope.$on('timer-stopped', function (event){ //this broke after adding other things on this page . . . 
     	$scope.$apply(function(){ 
-
     		$location.path('/compare');
     		$scope.submitPlayerAnswers();
     	});
@@ -28,25 +27,19 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 
 
 
-	//this was for getting answers
-	$scope.loopOverAnswers = function() {
-		
-		
-		
-	}
+	//this is for getting answer
 
-	
-    var ref = new Firebase("https://mtscattergories.firebaseio.com/playerAnswersTest/" + $scope.getUid);
-    var test = $firebase(ref).$asArray();
-    test.$add();
-    $scope.test=test;
+	$scope.arr = ['I have one thing in me'];//remove the array item- also, what to do about empy ones, it won't display it right if you don't handle empty ones
 
 
+		//this adds the scopeArr
         $scope.submitPlayerAnswers = function() {
-        	var answers = $scope.myAnswer;
-        	var ref = new Firebase("https://mtscattergories.firebaseio.com/playerAnswers/" + $scope.getUid);
+        	var answers = $scope.myAnswer; //i'm not sure this line is doing anything- go and see when I get a moment
+        	var ref = new Firebase("https://mtscattergories.firebaseio.com/users/" + playerService.getUid() + '/answerList');
   			var list = $firebase(ref).$asArray();
-			list.$add({what: 'hello', who: 'me', player: answers})
+			list.$add($scope.arr);
+
+			//list.$add({what: 'hello', who: 'me', player: answers})
         	
         }
 

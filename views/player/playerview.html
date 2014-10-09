@@ -4,6 +4,7 @@
 		<p>Hello {{userName}} </p>
 		<img src={{userImage}}>
 		
+		{{arr}}
 		
 		<p ng-repeat="user in users">{{users.$uid}}</p>  <!-- what is this? -->
 
@@ -16,18 +17,6 @@
 				<p></p>
 				<div  ng-repeat='gameQuestion in gameQuestions'> {{gameQuestion.$value}} 
 					<input ng-model="gameQuestion.myAnswer"></input>
-					<!-- <div ng-repeat="field in answerFields.answers">
-						<form>
-
-						
-							<input ng-model="field.value"></input>   
-
-
-							 Use the add property to add to an answer array, 
-						the problem right now is trying to tie ng-model to all of the repeats . . .
-
-						</form>
-					</div> -->
 				</div>
 				<!-- player/game/playerid/gameid- save to player id for that game id -->
 		
@@ -41,14 +30,15 @@
 		<timer interval="1000" countdown="120">{{countdown}}</timer>
 		<p>Answers</p>
 
-
 	
         <p ng-repeat="gameQuestion in gameQuestions">
             <input type="text" ng-model="gameQuestion.myAnswer">
+            <button ng-click="arr.push(gameQuestion.myAnswer)">Push Answer to Array</button>
         </p>
         <button ng-click="submitPlayerAnswers()">Submit Answers</button>
    
-    	<p ng-repeat="gameQuestion in gameQuestions">{{gameQuestion.myAnswer}} </p>
+    	
+    	<button ng-click="arr.push(gameQuestion.myAnswer)">Push Answer to Array</button>
 
 
 	</div>

@@ -2,7 +2,12 @@
 
 	<div class="col-md-4 player1">
 		<p>Game Creator</p>
+		
+		<div ng-repeat="answer in answers.0">{{answer}}
+			<button type="radio"></button>
+		</div>
 
+		
 		<input placeholder="Score" ng-model="scorePlayer1"></input>
 	</div>
 	<div class="col-md-4 player2">
@@ -16,5 +21,6 @@
 </div>
 
 <div>
-	<button ng-show='ifCreator'>Submit Scores</button>
+	
+	<button ng-show="ifCreator" ng-click="deletePlayerList()">Submit Scores</button>
 </div>

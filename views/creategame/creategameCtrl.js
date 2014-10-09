@@ -1,20 +1,13 @@
 var app = angular.module('scattergoriesApp');
+	var firebaseUrl = 'https://mtscattergories.firebaseio.com/';
+app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ playerService, creategameService, $firebase){
+	
+	//if they have come to create a game they need to be set as a creator, if they leave page in any other way, then they need to be set as notCreator
+		//$firebase(new Firebase(firebaseUrl + playerService.getUid() + '/gameCreator')); //this is what you did to add an answer list
+	
 
-app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ creategameService, $firebase){
-	$scope.moveToJoinGame = function(){
-		//setGameList-pass info on
-		$location.path('/joingame');
-	}
-
-
-
-	//get all lists
-
-		var firebaseUrl = 'https://mtscattergories.firebaseio.com/';
-		// $scope.lists = {
-		// 	name: 'list13',
-		// 	name: 'list14'
-		// }  Try and get this to show up in options
+		
+		
 
 		$scope.gameQuestions14 = $firebase(new Firebase(firebaseUrl + 'List14')).$asArray();
 		$scope.gameQuestions13 = $firebase(new Firebase(firebaseUrl + 'List13')).$asArray();
@@ -23,22 +16,28 @@ app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ creat
 		$scope.showList14 = false;
 		$scope.showList13 = false;
 
+
+		//this hides and shows lists and sets them to a variable
 		$scope.setGameList = function(){
 			if($scope.showList13 === true){
-				$scope.chosenGameList = gameQuestions14;
+				$scope.chosenGameList = 'List13';
+				// $firebase(new Firebase(firebaseUrl + 'List13')).$asArray().$loaded();
 			}
-			else if($scope.showList14 === true)
-				$scope.chosenGameList = gameQuestions13;
+			else if($scope.showList14 === true) {
+				$scope.chosenGameList = 'List14';
+				// $firebase(new Firebase(firebaseUrl+'List14')).$asArray().$loaded();
+			}
+			return $scope.chosenGameList;
 		}		
 
+		//this function takes the new game data and send it on
+		$scope.moveToJoinGame = function(){
+			$scope.gameListChosen = $scope.setGameList();
+			creategameService.setGameList($scope.gameListChosen);
+			$location.path('/joingame');
+		}
 
-		//$scope.gameQuestionsList14 = sync.$asArray();
-		//gameList.$asArray();
-	//the problem is I'm not really trying to change routes on the page- just the route of the firebase
-
-	//$scope.list13 = gameList.$asArray() = $scope.gameQuestions;
-	//$scope.list14 = gameList(list14) = $scope.gameQuestions
-	//$scope.gameQuestions = gameList.$asArray();
+		
 
 	
 	

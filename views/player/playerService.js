@@ -9,6 +9,7 @@ app.service('playerService', function ($firebase){
 	  console.log(username);
 	  var image = authData.google.cachedUserProfile.picture;
 	  var uid = authData.uid.replace('google:','');
+	  
 	}
 
 	this.getUserName = function() {
