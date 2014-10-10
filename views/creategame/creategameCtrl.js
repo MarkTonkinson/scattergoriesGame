@@ -7,11 +7,7 @@ app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ playe
 	
 		$scope.gameTitle;
 
-		$scope.createGameToJoin = function(gameTitle){ //this is called on the button
-			$scope.gameTitle.$add({
-				game: gameTitle
-			});
-		}
+	
 		
 
 		$scope.gameQuestions14 = $firebase(new Firebase(firebaseUrl + 'List14')).$asArray();
@@ -45,7 +41,7 @@ app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ playe
 			creategameService.setGameList($scope.gameListChosen);
 
 			//need to change the value of the player to a creator so they are in charge
-				
+			
 			//get uid to use
 			var uid = playerService.getUid();
 			
@@ -53,7 +49,8 @@ app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ playe
 			var arr = $firebase(ref).$asArray();
 
 			arr.$add($scope.creator);
-			//$scope.createGameToJoin();//have to pass in from view
+
+			
 			
 			//move to joingame page- this will need to be a routeparam for each game eventually
 			$location.path('/joingame/' + $scope.gameTitle);

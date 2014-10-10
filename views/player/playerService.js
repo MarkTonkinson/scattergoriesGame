@@ -12,7 +12,7 @@ app.service('playerService', function ($firebase){
 	}
 	//this is supposed to set the player to creator- it happens in teh create game control and will need to be reset at the end of a game
 	this.setUserToCreator = function(){
-		
+		//this is all in the control right now.. need to check it when I get to join game page
 	}
 
 	//used to display username on appropriate pages
