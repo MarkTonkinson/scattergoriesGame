@@ -35,11 +35,11 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 		//this adds the scopeArr
         $scope.submitPlayerAnswers = function() {
         	var answers = $scope.myAnswer; //i'm not sure this line is doing anything- go and see when I get a moment
+        	
+        	//creates array of player answers
         	var ref = new Firebase("https://mtscattergories.firebaseio.com/users/" + playerService.getUid() + '/answerList');
   			var list = $firebase(ref).$asArray();
-			list.$add($scope.arr);
-
-			//list.$add({what: 'hello', who: 'me', player: answers})
+			list.$add($scope.arr);		
         	
         }
 

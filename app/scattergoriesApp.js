@@ -1,6 +1,9 @@
 var app = angular.module('scattergoriesApp', ['ngRoute', 'firebase', 'timer']);
 
+var firebaseUrl = 'https://mtscattergories.firebaseio.com/';//because I threw this in the app, it's put on the window and it is available everywhere- typically, not good practice
+
 app.config(['$routeProvider', function($routeProvider){
+
 	$routeProvider
 	.when('/login', {
 		templateUrl: 'views/login/loginview.html',
@@ -15,10 +18,21 @@ app.config(['$routeProvider', function($routeProvider){
 			}
 		}
 	})
-	.when('/joingame', {
+	.when('/joingames', {
+		templateUrl: 'views/joingame/joingames.html',
+		controller: 'joingamesCtrl', 
+		resolve: {
+			joingameRef: function(creategameService, $route) {
+				return creategameService.addGameToJoin($route.current.params.gameTitle);
+			}
+		}
+	})
+	.when('/joingame/:gameTitle', {
 		templateUrl: 'views/joingame/joingame.html', 
 		controller: 'joingameCtrl',
 		resolve: {
+			
+
 			game: function(creategameService){
 				return creategameService.getGameList();
 			}
@@ -31,6 +45,7 @@ app.config(['$routeProvider', function($routeProvider){
 			gameList: function(playerService) {
 				return playerService.getGameList();
 			}
+
 		}
 	})
 	.when('/compare', {

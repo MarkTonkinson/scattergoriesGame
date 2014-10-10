@@ -1,8 +1,10 @@
 var app = angular.module('scattergoriesApp');
 
 app.controller('joingameCtrl', function($scope, $location, playerService, $firebase, game){
+	// var firebaseUrl = 'https://mtscattergories.firebaseio.com/';
 	$scope.ifCreator = true; // set this with the user
 	$scope.startGame = function(){
+
 		$location.path('/player/' + playerService.getUid());
 	}
 
@@ -15,14 +17,14 @@ app.controller('joingameCtrl', function($scope, $location, playerService, $fireb
 		$scope.displayLetter = alphabet[randomNum()];
 		
 	}
-//how does this know the firebaseUrl???????  I don't ever refer to it here . . .
-//I think the fix will be to pass a string 'List14" and then give that string as a variable in this reference'
-	$scope.gameQuestions14 = $firebase(new Firebase(firebaseUrl + 'List14')).$asArray();
-	console.log($scope.gameQuestions14);
 
-	$scope.gameQuestions = game;
 
-	//this calls the list chosen in createGame and puts it on scope so I can display it
-	// $scope.gameQuestions = creategameService.getGameList().$asArray();
+//this calls the list chosen in createGame and puts it on scope so I can display it
+	var gameListRef = $firebase(new Firebase(firebaseUrl + game)).$asObject(); //game is coming through the resolve
+
+	$scope.gameQuestions = gameListRef; 
+
+	gameListRef.$bindTo($scope, 'gameQuestions');
+
 	console.log($scope.gameQuestions);
 });

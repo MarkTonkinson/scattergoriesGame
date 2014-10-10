@@ -3,14 +3,13 @@ var app = angular.module('scattergoriesApp');
 app.service('creategameService', function($firebase){
 	
 	var newGame;
-	var firebaseUrl = 'https://mtscattergories.firebaseio.com/';
-
+	
+	this.addGameToJoin = function(gameId){ //this is keeping track of games to join information
+		return $firebase(new Firebase(firebaseUrl + '/games/' + gameId));
+	}
 
 	this.getGameList = function(){
-		return $firebase(new Firebase(firebaseUrl + newGame)).$asArray().$loaded().then(function(res){
-			debugger;
-			return res;
-		});
+		return newGame;
 	}
 
 	this.setGameList = function(chosenList) {

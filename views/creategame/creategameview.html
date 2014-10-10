@@ -4,7 +4,8 @@
 	<div class="row">
 		<!-- Create Game Tools -->
 		<div class="col-md-4">
-			<input ng-model="newGame.gameTitle" placeholder="Game title"></input>
+			<input ng-model="game.gameTitle" placeholder="Game title"></input>
+
 			
 			<!-- <form role="form">
 				<select ng-model="selectedList" ng-options="list as list.name for list in lists" class="form-control">
@@ -17,7 +18,7 @@
 			<li><button ng-click="showList13=true; showList14=false">List 13</button></li>
 			<li><button ng-click="showList14=true; showList13=false">List 14</button></li>
 
-			<button ng-click="moveToJoinGame()">Ready for Players</button>
+			<button ng-click="moveToJoinGame(); $scope.createGameToJoin(game.gameTitle)">Ready for Players</button> 
 		</div>
 
 
@@ -28,7 +29,9 @@
 
 
 		<!-- Show Game List Selected -->
+		{{gameTitle}}
 		<div ng-show="showList13" class="col-md-4">
+			{{gameTitle}}
 			<div  ng-repeat='gameQuestion in gameQuestions13'> {{gameQuestion.$value}} </div>
 		</div>
 

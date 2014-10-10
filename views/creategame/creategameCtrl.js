@@ -1,12 +1,17 @@
 var app = angular.module('scattergoriesApp');
-	var firebaseUrl = 'https://mtscattergories.firebaseio.com/';
+
 app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ playerService, creategameService, $firebase){
 	
 	//if they have come to create a game they need to be set as a creator, if they leave page in any other way, then they need to be set as notCreator
 		//$firebase(new Firebase(firebaseUrl + playerService.getUid() + '/gameCreator')); //this is what you did to add an answer list
 	
+		$scope.gameTitle;
 
-		
+		$scope.createGameToJoin = function(gameTitle){ //this is called on the button
+			$scope.gameTitle.$add({
+				game: gameTitle
+			});
+		}
 		
 
 		$scope.gameQuestions14 = $firebase(new Firebase(firebaseUrl + 'List14')).$asArray();
@@ -30,11 +35,28 @@ app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ playe
 			return $scope.chosenGameList;
 		}		
 
+		
+		$scope.creator = 'creator';
+		
 		//this function takes the new game data and send it on
 		$scope.moveToJoinGame = function(){
+			//collects the currently viewed list as the list you want
 			$scope.gameListChosen = $scope.setGameList();
 			creategameService.setGameList($scope.gameListChosen);
-			$location.path('/joingame');
+
+			//need to change the value of the player to a creator so they are in charge
+				
+			//get uid to use
+			var uid = playerService.getUid();
+			
+			var ref = new Firebase('https://mtscattergories.firebaseio.com/users/' + uid + '/gameCreator');
+			var arr = $firebase(ref).$asArray();
+
+			arr.$add($scope.creator);
+			//$scope.createGameToJoin();//have to pass in from view
+			
+			//move to joingame page- this will need to be a routeparam for each game eventually
+			$location.path('/joingame/' + $scope.gameTitle);
 		}
 
 		
