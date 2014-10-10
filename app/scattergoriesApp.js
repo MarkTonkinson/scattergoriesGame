@@ -20,17 +20,18 @@ app.config(['$routeProvider', function($routeProvider){
 	})
 	.when('/joingames', {
 		templateUrl: 'views/joingame/joingames.html',
-		controller: 'joingamesCtrl'
+		controller: 'joingamesCtrl',
+		// resolve: {
+		// 	joingameRef: function(creategameService, $route) {
+		// 		return creategameService.addGameToJoin($route.current.params.gameTitle); //this grabs the route param when it gets to the page
+		// 	}
+		// }
 
 	})
-	.when('/joingame/:gameTitle', {
-		templateUrl: 'views/joingame/joingame.html', 
-		controller: 'joingameCtrl',
+	.when('/hostgame/:gameTitle', {
+		templateUrl: 'views/joingame/hostgame.html', 
+		controller: 'hostgameCtrl',
 		resolve: {
-			joingameRef: function(creategameService, $route) {
-				return creategameService.addGameToJoin($route.current.params.gameTitle); //this grabs the route param when it gets to the page
-			},
-
 			game: function(creategameService){
 				return creategameService.getGameList();
 			}

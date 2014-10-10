@@ -35,7 +35,7 @@ app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ playe
 		$scope.creator = 'creator';
 		
 		//this function takes the new game data and send it on
-		$scope.moveToJoinGame = function(){
+		$scope.moveToHostGame = function(){
 			//collects the currently viewed list as the list you want
 			$scope.gameListChosen = $scope.setGameList();
 			creategameService.setGameList($scope.gameListChosen);
@@ -51,9 +51,8 @@ app.controller('creategameCtrl', function($scope, $location, /*gameList,*/ playe
 			arr.$add($scope.creator);
 
 			
-			
-			//move to joingame page- this will need to be a routeparam for each game eventually
-			$location.path('/joingame/' + $scope.gameTitle);
+			//move to hostgame page
+			$location.path('/hostgame/' + $scope.gameTitle);
 		}
 
 		
