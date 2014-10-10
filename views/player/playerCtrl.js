@@ -25,21 +25,20 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 	$scope.gameQuestions = gameList.$asArray();  //need to make this dynamic
 
 
+	$scope.answers;
 
 
 	//this is for getting answer
 
-	$scope.arr = ['I have one thing in me'];//remove the array item- also, what to do about empy ones, it won't display it right if you don't handle empty ones
-
+	
 
 		//this adds the scopeArr
         $scope.submitPlayerAnswers = function() {
-        	var answers = $scope.myAnswer; //i'm not sure this line is doing anything- go and see when I get a moment
         	
         	//creates array of player answers
         	var ref = new Firebase("https://mtscattergories.firebaseio.com/users/" + playerService.getUid() + '/answerList');
   			var list = $firebase(ref).$asArray();
-			list.$add($scope.arr);		
+			list.$add($scope.answers);		
         	
         }
 

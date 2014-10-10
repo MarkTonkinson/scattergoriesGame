@@ -1,23 +1,36 @@
 <link rel="stylesheet" href="views/player/playerstyles.css">
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<p>Hello {{userName}} </p>
 		<img src={{userImage}}>
 		
-		{{arr}}
 		
-		<p ng-repeat="user in users">{{users.$uid}}</p>  <!-- what is this? -->
+		
+		
 
 		<div>
-				<!-- <label>List Label</label>
-				<input ></input>
-				<button ng-click="submitAnswer()">submit</button> -->
+				
 				
 
-				<p></p>
-				<div  ng-repeat='gameQuestion in gameQuestions'> {{gameQuestion.$value}} 
-					<input ng-model="gameQuestion.myAnswer"></input>
-				</div>
+    	<div class='col-md-6'>
+    		<input type='text' ng-model="answers.a"></input>
+    		<input type='text' ng-model="answers.b"></input>
+    		<input type='text' ng-model="answers.c"></input>
+    		<input type='text' ng-model="answers.d"></input>
+    		<input type='text' ng-model="answers.e"></input>
+    		<input type='text' ng-model="answers.f"></input>
+    		<input type='text' ng-model="answers.g"></input>
+    		<input type='text' ng-model="answers.h"></input>
+    		<input type='text' ng-model="answers.i"></input>
+    		<input type='text' ng-model="answers.j"></input>
+    		<input type='text' ng-model="answers.k"></input>
+    		<input type='text' ng-model="answers.l"></input>
+
+    	</div>
+		<div  ng-repeat='gameQuestion in gameQuestions'> {{gameQuestion.$value}}
+					
+					
+		</div>
 				<!-- player/game/playerid/gameid- save to player id for that game id -->
 		
 		</div>
@@ -31,14 +44,13 @@
 		<p>Answers</p>
 
 	
-        <p ng-repeat="gameQuestion in gameQuestions">
-            <input type="text" ng-model="gameQuestion.myAnswer">
-            <button ng-click="arr.push(gameQuestion.myAnswer)">Push Answer to Array</button>
-        </p>
+        
         <button ng-click="submitPlayerAnswers()">Submit Answers</button>
    
     	
-    	<button ng-click="arr.push(gameQuestion.myAnswer)">Push Answer to Array</button>
+
+
+    	
 
 
 	</div>
