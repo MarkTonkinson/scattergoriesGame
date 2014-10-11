@@ -5,16 +5,16 @@
 		<!-- Create Game Tools -->
 		<div class="col-md-4">
 			<input ng-model="gameTitle" placeholder="Game title"></input>
+			<button ng-click='addToGameArray(gameTitle)'>Create Game</button>
 
-
+			<div>
+				<h4>Games List</h4>
+				<div ng-repeat='game in games'>
+					<a href='/#/game/{{game}}'>{{game}}</a>
+				</div>
+			</div>
 			
-
-			<p>Choose a game list</p>
-			<li><button ng-click="showList13=true; showList14=false">List 13</button></li>
-			<li><button ng-click="showList14=true; showList13=false">List 14</button></li>
-
-			<button ng-click="moveToHostGame()">Ready for Players</button> 
-		</div>
+			
 
 
 		<!-- divider -->
@@ -23,15 +23,6 @@
 
 
 
-		<!-- Show Game List Selected -->
-		{{gameTitle}}  
-		<div ng-show="showList13" class="col-md-4">
-			{{gameTitle}}
-			<div  ng-repeat='gameQuestion in gameQuestions13'> {{gameQuestion.$value}} </div>
-		</div>
-
-		<div ng-show="showList14" class="col-md-4">
-			<div  ng-repeat='gameQuestion in gameQuestions14'> {{gameQuestion.$value}} </div>
-		</div>
+		
 
 </div>

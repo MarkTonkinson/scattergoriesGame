@@ -9,7 +9,7 @@ app.config(['$routeProvider', function($routeProvider){
 		templateUrl: 'views/login/loginview.html',
 		controller: 'loginCtrl' 
 	})
-	.when('/player/:userId', {
+	.when('/game/:gameId/player/:userId', {
 		templateUrl: 'views/player/playerview.html',
 		controller: 'playerCtrl',
 		resolve: {
@@ -20,7 +20,7 @@ app.config(['$routeProvider', function($routeProvider){
 	})
 	.when('/joingames', {
 		templateUrl: 'views/joingame/joingames.html',
-		controller: 'joingamesCtrl',
+		controller: 'joingamesCtrl'
 		// resolve: {
 		// 	joingameRef: function(creategameService, $route) {
 		// 		return creategameService.addGameToJoin($route.current.params.gameTitle); //this grabs the route param when it gets to the page
@@ -28,7 +28,7 @@ app.config(['$routeProvider', function($routeProvider){
 		// }
 
 	})
-	.when('/hostgame/:gameTitle', {
+	.when('/game/:gameTitle', {
 		templateUrl: 'views/joingame/hostgame.html', 
 		controller: 'hostgameCtrl',
 		resolve: {
@@ -47,7 +47,7 @@ app.config(['$routeProvider', function($routeProvider){
 
 		}
 	})
-	.when('/compare', {
+	.when('/compare/game/:gameId', {
 		templateUrl: 'views/compare/compareview.html',
 		controller: 'compareCtrl'
 	})

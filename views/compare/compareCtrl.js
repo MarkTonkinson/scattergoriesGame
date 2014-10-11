@@ -9,15 +9,14 @@ app.controller('compareCtrl', function($scope, playerService, $firebase){
   	$scope.answers = list;
   	console.log(list);
 
-  //I tried making removing it as an object and as an array- I've tried so many things . . . is it a read write issue?  
-  //  code like
-  		//list.$remove();  list.$remove($scope.answers);  $scope.answers.$remove();
-  		//list[0].$remove();
-  		//list.$destroy();  $scope.answers.$destroy();  $scope.answer.$destory();- trying to remove the one
-  	//again and again it just said the method was undefined
-  	//if I put it in the deletePlayerList function it got stuck in teh normal angular land place
-
-  	
+  
+  $scope.creatorScore;
+  //this increases player's score
+  $scope.scoreCounterPlus = function(){
+    debugger;
+  	var ref = new Firebase("https://mtscattergories.firebaseio.com/users/" + playerService.getUid() + '/score');
+      $firebase(ref).$set($scope.creatorScore); //this will only 'set' the most recent score- it doesn't add to it
+    }
 
   	//submit game, destroy player list
   	$scope.deletePlayerList = function(){ 	

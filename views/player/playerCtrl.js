@@ -4,7 +4,7 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 	
 	$scope.$on('timer-stopped', function (event){ //this broke after adding other things on this page . . . 
     	$scope.$apply(function(){ 
-    		$location.path('/compare');
+    		$location.path('/compare/');
     		$scope.submitPlayerAnswers();
     	});
     }); //apply forces it to work anyway - super wierd that it stopped
@@ -28,9 +28,27 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 	$scope.answers;
 
 
-	//this is for getting answer
-
 	
+		//this code breaks down the location code
+		//use form validation to prevent people from using slashes
+		$scope.grabCorrectGameId = function(){
+		
+			var n = 0;
+			var str = $location.$$path
+			var lettersToKeep = [];
+			for(var i = 0; i < str.length; i++) {
+				lettersToKeep.push(str[i])
+				if(str[i] === '/') {
+					n++;	
+				}
+				if (n === 3) {
+					break;
+				}
+			}
+			
+			return lettersToKeep.join('');
+
+		}
 
 		//this adds the scopeArr
         $scope.submitPlayerAnswers = function() {
@@ -38,7 +56,11 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
         	//creates array of player answers
         	var ref = new Firebase("https://mtscattergories.firebaseio.com/users/" + playerService.getUid() + '/answerList');
   			var list = $firebase(ref).$asArray();
-			list.$add($scope.answers);		
+			list.$add($scope.answers);	
+			var correctPath = $scope.grabCorrectGameId();
+			console.log($scope.grabCorrectGameId());
+
+			$location.path('/compare' + correctPath);//remove later	
         	
         }
 

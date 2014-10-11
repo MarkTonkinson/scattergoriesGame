@@ -4,11 +4,12 @@
 		<p>Game Creator</p>
 		
 		<div ng-repeat="answer in answers.0">
-			<button type="radio"></button>{{answer}}
+			<input type="checkbox"></input>{{answer}}
 		</div>
 
 		
-		<input placeholder="Score" ng-model="scorePlayer1"></input>
+		<input placeholder="Score" ng-model="creatorScore"></input>
+		<button ng-click="scoreCounterPlus()">Submit Score</button>
 	</div>
 	<div class="col-md-4 player2">
 		<p>Player 2</p>
