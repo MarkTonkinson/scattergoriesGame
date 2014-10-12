@@ -5,24 +5,19 @@ app.controller('loginCtrl', function($scope, loginService, $location){
 	$scope.login = function(){
 		loginService.firebaseLogin().then(function(data){
 			console.log(data);
-			$location.path('/joingames');
+			$location.path('/create');
 		});
 	}
 		
-	
+}) //end controller
+
 	//Things I've tried
 	/*Resolve in the Service
 	Resolve in the router
 	Pause with if statements in the controller and the service*/
 			
-		
-			
 		//$location.path('/player');
 
-		
-
-
-		
 						//console.log(authData);
 		
 
@@ -36,4 +31,4 @@ app.controller('loginCtrl', function($scope, loginService, $location){
 		
 	
 
-})
+

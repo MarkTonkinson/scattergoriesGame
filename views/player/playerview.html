@@ -1,36 +1,48 @@
 <link rel="stylesheet" href="views/player/playerstyles.css">
 <div class="row">
 	<div class="col-md-6">
-		<p>Hello {{userName}} </p>
+		<p>{{userName}} </p>
 		<img src={{userImage}}>
 		
 		
+		<p></p>
+		<h4>Choose a game list</h4>
+		<li><button ng-click="showList13=true; showList14=false">List 13</button></li>
+		<li><button ng-click="showList14=true; showList13=false">List 14</button></li>
+
 		
 		
 
-		<div>
+		
 				
 				
 
     	<div class='col-md-6'>
-    		<input type='text' ng-model="answers.a"></input>
-    		<input type='text' ng-model="answers.b"></input>
-    		<input type='text' ng-model="answers.c"></input>
-    		<input type='text' ng-model="answers.d"></input>
-    		<input type='text' ng-model="answers.e"></input>
-    		<input type='text' ng-model="answers.f"></input>
-    		<input type='text' ng-model="answers.g"></input>
-    		<input type='text' ng-model="answers.h"></input>
-    		<input type='text' ng-model="answers.i"></input>
-    		<input type='text' ng-model="answers.j"></input>
-    		<input type='text' ng-model="answers.k"></input>
-    		<input type='text' ng-model="answers.l"></input>
+    		
+    		<input type='text' ng-model="answers.b" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.c" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.d" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.e" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.f" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.g" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.h" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.i" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.j" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.k" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model="answers.l" placeholder='No Answer Given'></input>
+    		<input type='text' ng-model='answers.m' placeholder='No Answer Given'></input>
 
     	</div>
-		<div  ng-repeat='gameQuestion in gameQuestions'> {{gameQuestion.$value}}
-					
-					
+		<!-- Show Game List Selected -->
+		
+		<div ng-show="showList13">
+			<div ng-repeat='gameQuestion in gameQuestions13'> {{gameQuestion.$value}} </div>
 		</div>
+
+		<div ng-show="showList14">
+			<div  ng-repeat='gameQuestion in gameQuestions14'> {{gameQuestion.$value}} </div>
+		</div>
+
 				<!-- player/game/playerid/gameid- save to player id for that game id -->
 		
 		</div>
@@ -45,6 +57,8 @@
 
 	
         
+
+
         <button ng-click="submitPlayerAnswers()">Submit Answers</button>
    
     	

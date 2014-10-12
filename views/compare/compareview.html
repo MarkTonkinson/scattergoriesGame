@@ -1,27 +1,39 @@
-<div class="row">
 
-	<div class="col-md-4 player1">
-		<p>Game Creator</p>
-		
-		<div ng-repeat="answer in answers.0">
-			<input type="checkbox"></input>{{answer}}
+		<h4>Player Answers</h4>
+		<div ng-repeat='answer in answers'>
+			<div class="col-md-2" class='row'>
+				<h5> {{answer.a}}'s Answers</h5>
+				<li> 1. {{answer.b}} </li>
+				<li> 2.	{{answer.c}} </li>
+				<li> 3.	{{answer.d}} </li>
+				<li> 4.	{{answer.e}} </li>
+				<li> 5.	{{answer.f}} </li>
+				<li> 6.	{{answer.g}} </li>
+				<li> 7.	{{answer.h}} </li>
+				<li> 8.	{{answer.i}} </li>
+				<li> 9.	{{answer.j}} </li>
+				<li> 10. {{answer.k}} </li>
+				<li> 11. {{answer.l}} </li>
+				<li> 12. {{answer.m}} </li>
+				<p></p>
+				<p></p>
+			</div>
+
 		</div>
 
-		
-		<input placeholder="Score" ng-model="creatorScore"></input>
-		<button ng-click="scoreCounterPlus()">Submit Score</button>
-	</div>
-	<div class="col-md-4 player2">
-		<p>Player 2</p>
-
-
-		<input placeholder="Score" ng-model="scorePlayer2"></input>
-	</div>
-
-
-</div>
-
-<div>
+			<div class='col-md-1'>
 	
-	<button ng-show="ifCreator" ng-click="deletePlayerList()">Submit Scores</button>
-</div>
+				<button ng-click="deletePlayerAnswersAndGame()">Reset Scores</button>
+			</div>
+
+			<!-- Second Column for Chat -->
+	<div class="col-md-12"> 
+		<input type='text' ng-model='chatMessage.text'><button ng-click='addChat()'>Add Message</button>
+		<div class='chat-room'>
+			<p ng-repeat='chat in chats'>{{chat.chatName}} : {{chat.text}}</p>
+		</div>
+
+
+	</div>
+
+

@@ -30,12 +30,8 @@ app.config(['$routeProvider', function($routeProvider){
 	})
 	.when('/game/:gameTitle', {
 		templateUrl: 'views/joingame/hostgame.html', 
-		controller: 'hostgameCtrl',
-		resolve: {
-			game: function(creategameService){
-				return creategameService.getGameList();
-			}
-		}
+		controller: 'hostgameCtrl'
+		
 	})
 	.when('/create', {
 		templateUrl: 'views/creategame/creategameview.html',
@@ -44,7 +40,6 @@ app.config(['$routeProvider', function($routeProvider){
 			gameList: function(playerService) {
 				return playerService.getGameList();
 			}
-
 		}
 	})
 	.when('/compare/game/:gameId', {
