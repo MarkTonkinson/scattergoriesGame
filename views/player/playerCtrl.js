@@ -4,9 +4,8 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 	
 	$scope.$on('timer-stopped', function (event){ //this broke after adding other things on this page . . . 
     	$scope.$apply(function(){ 
-    		var correctPath2 = $scope.grabGameNameId();
-    		$location.path('/compare/' + correctPath2);
     		$scope.submitPlayerAnswers();
+    		
     	});
     }); //apply forces it to work anyway - super wierd that it stopped
 
@@ -108,7 +107,7 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
   			var list = $firebase(ref).$asArray();
   			
 			list.$add($scope.answers);
-
+			debugger;
 			$location.path('/compare' + correctPath);//remove later	
         	
         }

@@ -9,6 +9,9 @@ app.controller('creategameCtrl', function($scope, $location, playerService, crea
 		
 		$scope.games = $firebase(new Firebase(firebaseUrl + 'games')).$asObject();
 		
+		//this grabs the user info from the service
+		$scope.userName = playerService.getUserName();
+		$scope.userImage = playerService.getUserImage();
 		
 		$scope.addToGameArray = function(gameTitle) {
 

@@ -1,9 +1,19 @@
 <div>
-	<h2 class="col-md-12">Create New Game</h2>
 	
 	<div class="row">
+		<div class='col-md-1 user-info text-center'>
+			<p>{{userName}} </p>
+			<img src={{userImage}}>
+			<p></p>
+		</div>
+
+	
+		<div class='col-md-1'></div>
+	
 		<!-- Create Game Tools -->
-		<div class="col-md-4">
+		<div class="col-md-4 create-new-game">
+			<h2>Create New Game</h2>
+
 			<input ng-model="gameTitle" placeholder="Game title"></input>
 			<button ng-click='addToGameArray(gameTitle)'>Create Game</button>
 
@@ -13,12 +23,14 @@
 					<a href='/#/game/{{game}}'>{{game}}</a> 
 				</div>
 			</div>
-			
+		</div>
 			
 
 
 		<!-- divider -->
-		<div class="col-md-2"></div>
+		
+		
+		
 
 
 

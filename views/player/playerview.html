@@ -1,71 +1,62 @@
-<link rel="stylesheet" href="views/player/playerstyles.css">
+
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-2">
 		<p>{{userName}} </p>
-		<img src={{userImage}}>
-		
-		
-		<p></p>
-		<h4>Choose a game list</h4>
-		<li><button ng-click="showList13=true; showList14=false">List 13</button></li>
-		<li><button ng-click="showList14=true; showList13=false">List 14</button></li>
-
-		
-		
-
-		
-				
-				
-
-    	<div class='col-md-6'>
-    		
-    		<input type='text' ng-model="answers.b" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.c" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.d" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.e" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.f" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.g" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.h" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.i" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.j" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.k" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model="answers.l" placeholder='No Answer Given'></input>
-    		<input type='text' ng-model='answers.m' placeholder='No Answer Given'></input>
-
-    	</div>
-		<!-- Show Game List Selected -->
-		
-		<div ng-show="showList13">
-			<div ng-repeat='gameQuestion in gameQuestions13'> {{gameQuestion.$value}} </div>
-		</div>
-
-		<div ng-show="showList14">
-			<div  ng-repeat='gameQuestion in gameQuestions14'> {{gameQuestion.$value}} </div>
-		</div>
-
-				<!-- player/game/playerid/gameid- save to player id for that game id -->
-		
-		</div>
-	</div>
-
-	<div class="col-md-2"></div>
-
-	<div class='col-md-4'>
+		<p><img src={{userImage}}></p>
 
 		<timer interval="1000" countdown="120">{{countdown}}</timer>
-		<p>Answers</p>
+		
 
-	
-        
 
 
         <button ng-click="submitPlayerAnswers()">Submit Answers</button>
-   
-    	
+	</div>
 
+	<div class='col-md-5'>
+		<h4>Display chosen game list
+		
+		<button ng-click="showList13=true; showList14=false">List 13</button>
+		<button ng-click="showList14=true; showList13=false">List 14</button>
+		</h4>
+		<div class='show-list-player' ng-show="showList13">
+			<p ng-repeat='gameQuestion in gameQuestions13'> {{gameQuestion.$value}} </p>
+		</div>
 
-    	
+		<div class='show-list-player' ng-show="showList14">
+			<p  ng-repeat='gameQuestion in gameQuestions14'> {{gameQuestion.$value}} </p>
+		</div>
+    		
+    		
+
+    	</div>
+    
+
+		<!-- Show Game List Selected -->
+
+	<div class='col-md-5 player-answers'>
+		<h4>Answers</h4>
+			<p>1. <input type='text' ng-model="answers.b"></input>
+    		<p>2. <input type='text' ng-model="answers.c"></input>
+    		<p>3. <input type='text' ng-model="answers.d"></input>
+    		<p>4. <input type='text' ng-model="answers.e"></input>
+    		<p>5. <input type='text' ng-model="answers.f"></input>
+    		<p>6. <input type='text' ng-model="answers.g"></input>
+    		<p>7. <input type='text' ng-model="answers.h"></input>
+    		<p>8. <input type='text' ng-model="answers.i"></input>
+    		<p>9. <input type='text' ng-model="answers.j"></input>
+    		<p>10.<input type='text' ng-model="answers.k"></input>
+    		<p>11.<input type='text' ng-model="answers.l"></input>
+    		<p>12.<input type='text' ng-model='answers.m'></input>
+	</div>
+				<!-- player/game/playerid/gameid- save to player id for that game id -->
+		
+	
+
+	
+
+	<div class='col-md-4'>
+
+		
 
 
 	</div>
-</div>
