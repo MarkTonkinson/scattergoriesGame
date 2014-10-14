@@ -3,18 +3,18 @@
 		<div ng-repeat='answer in answers'>
 			<div class="col-md-2 compare-answers" class='row'>
 				<h5> {{answer.a}}'s Answers</h5>
-				<li> 1. {{answer.b}} </li>
-				<li> 2.	{{answer.c}} </li>
-				<li> 3.	{{answer.d}} </li>
-				<li> 4.	{{answer.e}} </li>
-				<li> 5.	{{answer.f}} </li>
-				<li> 6.	{{answer.g}} </li>
-				<li> 7.	{{answer.h}} </li>
-				<li> 8.	{{answer.i}} </li>
-				<li> 9.	{{answer.j}} </li>
-				<li> 10. {{answer.k}} </li>
-				<li> 11. {{answer.l}} </li>
-				<li> 12. {{answer.m}} </li>
+				<li> 1. <u>{{answer.b}}</u> </li>
+				<li> 2.	<u>{{answer.c}}</u> </li>
+				<li> 3.	<u>{{answer.d}}</u> </li>
+				<li> 4.	<u>{{answer.e}}</u> </li>
+				<li> 5.	<u>{{answer.f}}</u> </li>
+				<li> 6.	<u>{{answer.g}}</u> </li>
+				<li> 7.	<u>{{answer.h}}</u> </li>
+				<li> 8.	<u>{{answer.i}}</u> </li>
+				<li> 9.	<u>{{answer.j}}</u> </li>
+				<li> 10. <u>{{answer.k}}</u> </li>
+				<li> 11. <u>{{answer.l}}</u> </li>
+				<li> 12. <u>{{answer.m}}</u> </li>
 				<p></p>
 				<p></p>
 			</div>
@@ -28,8 +28,11 @@
 
 			<!-- Second Column for Chat -->
 	<div class="col-md-12"> 
-		<input type='text' ng-model='chatMessage.text'><button ng-click='addChat()'>Add Message</button>
-		<div class='chat-room'>
+		
+		<div class='chat-room-endgame'>
+			<form ng-submit='addChat()'>
+				<input class='chat-input' type='text' ng-model='chatMessage.text' placeholder="Chat here . . .">
+			</form>
 			<p ng-repeat='chat in chats'>{{chat.chatName}} : {{chat.text}}</p>
 		</div>
 
