@@ -11,7 +11,7 @@ app.controller('creategameCtrl', function($scope, $location, playerService, crea
 		
 		$scope.games = $firebase(new Firebase(firebaseUrl + 'games')).$asObject();
 		
-		console.log($scope.games)
+		//console.log($scope.games)
 		//this grabs the user info from the service
 		$scope.userName = playerService.getUserName();
 		$scope.userImage = playerService.getUserImage();
@@ -30,7 +30,7 @@ app.controller('creategameCtrl', function($scope, $location, playerService, crea
 				gamePassword: pword
 			}
 			
-			debugger;
+			
 			var gameRef = $firebase(new Firebase(firebaseUrl + 'games/' + newGameObj.gameName));
 			
 			gameRef.$set(newGameObj);
@@ -44,6 +44,14 @@ app.controller('creategameCtrl', function($scope, $location, playerService, crea
 
 		$scope.passwordInputShow = function() {
 			$scope.passwordInput = !$scope.passwordInput;
+		}
+
+		$scope.checkForPassword = function(gameObj){
+			console.log(gameObj);
+			var gameRef = $firebase(new Firebase(firebaseUrl + 'games/' + gameObj.gameName)).$asObject();
+			
+			console.log(gameRef);
+
 		}
 		
 })

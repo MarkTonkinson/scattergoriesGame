@@ -1,0 +1,72 @@
+
+
+<!-- <div ng-repeat="gamesavaialable"></div>  need a list of games to play-->
+
+<div class="row">
+
+	<div class='col-md-2'>
+			<u><strong>{{userName}}</strong></u>
+			<img src={{userImage}}>
+			<p></p>
+	
+	
+	
+		
+			
+		
+		<h4>Choose a Game List</h4>
+		
+		<button ng-click="showList13=true; showList14=false">List 13</button>
+		<button ng-click="showList14=true; showList13=false">List 14</button>
+		
+		<div class='start-game'>
+			<button ng-click="generateLetter()">Generate Letter</button>
+			<div class='game-letter'>
+			<h4>{{displayLetter}}</h4>
+			</div>
+		</div>
+		
+		<div>
+			<button ng-click="startGame()">Start Game</button>
+		</div>
+		
+		
+	</div>
+
+	<div class='col-md-4'> <!-- Show Game List Selected -->		
+		
+		
+		<div class='show-list' ng-show="showList13">
+			<p ng-repeat='gameQuestion in gameQuestions13'> <u>{{gameQuestion.$value}}</u> </p>
+		</div>
+
+		<div class='show-list' ng-show="showList14">
+			<p  ng-repeat='gameQuestion in gameQuestions14'> <u>{{gameQuestion.$value}}</u> </p>
+		</div>
+		
+	</div>
+		
+
+
+
+	<!-- Second Column for Chat -->
+	<div class="col-md-6"> 
+		
+
+		<div class='chat-room'>
+			<div class='chat-type-box'>
+			<form ng-submit="addChat()">
+				<input class='chat-input' type='text' ng-model='chatMessage.text'> 
+			</form>
+				
+			</div>
+			<p>
+			<p ng-repeat='chat in chats'>{{chat.chatName}} : {{chat.text}}</p>
+		</div>
+
+
+	</div>
+		
+</div>
+
+			
