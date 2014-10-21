@@ -11,7 +11,7 @@ app.controller('creategameCtrl', function($scope, $location, playerService, crea
 		
 		$scope.games = $firebase(new Firebase(firebaseUrl + 'games')).$asObject();
 		
-		//console.log($scope.games)
+		console.log($scope.games)
 		//this grabs the user info from the service
 		$scope.userName = playerService.getUserName();
 		$scope.userImage = playerService.getUserImage();
@@ -30,7 +30,7 @@ app.controller('creategameCtrl', function($scope, $location, playerService, crea
 				gamePassword: pword
 			}
 			
-			
+			debugger;
 			var gameRef = $firebase(new Firebase(firebaseUrl + 'games/' + newGameObj.gameName));
 			
 			gameRef.$set(newGameObj);
@@ -46,25 +46,6 @@ app.controller('creategameCtrl', function($scope, $location, playerService, crea
 			$scope.passwordInput = !$scope.passwordInput;
 		}
 
-		$scope.checkForPassword = function(gameObj){
-			console.log(gameObj);
-			var gameRef = $firebase(new Firebase(firebaseUrl + 'games/' + gameObj.gameName)).$asObject();
-			
-			console.log(gameObj.gamePassword);
-			if(gameObj.gamePassword !== 'none'){
-				$location.path('/loginToGame/' + gameObj.gamename);
-			} else {
-				$location.path('/game/' + gameObj.gameName)
-			}
-
-		}
-		//this refers to the 
-		$scope.loginPassword = function(){
-			var loginLocale = $location.path.replace('/loginToGame/','');
-			console.log(loginLocale);
-			var gameRef = $firebase(new Firebase(firebaseUrl + 'games/' + loginLocale)).$asObject();
-			console.log(gameRef)
-			//if($scope.gameLogin === gameRef)
-		}
+		
 		
 })

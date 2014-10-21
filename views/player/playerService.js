@@ -1,6 +1,6 @@
 var app = angular.module('scattergoriesApp');
 
-app.service('playerService', function ($firebase){
+app.service('playerService', function ($firebase, $q){
 
 	var dataRef = new Firebase('https://mtscattergories.firebaseio.com');
 	var authData = dataRef.getAuth();
@@ -43,13 +43,13 @@ app.service('playerService', function ($firebase){
  //        	console.log("loaded record", arr);
 	// }
 
-	this.playerAnswers = function() {
-		$firebase(new Firebase(firebaseUrl)); //not doing anything right now
-	}
-//I don't think this is doing anything . . ..
-	this.getUser = function(userId){
-		return $firebase(new Firebase(firebaseUrl + 'users/' + userId)).$asObject();
-	};
+// 	this.playerAnswers = function() {
+// 		$firebase(new Firebase(firebaseUrl)); //not doing anything right now
+// 	}
+// //I don't think this is doing anything . . ..
+// 	this.getUser = function(userId){
+// 		return $firebase(new Firebase(firebaseUrl + 'users/' + userId)).$asObject();
+// 	};
 	
 
 });

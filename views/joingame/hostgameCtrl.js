@@ -74,7 +74,6 @@ app.controller('hostgameCtrl', function($scope, $location, playerService, $fireb
 		
 
 	
-
 }); //endPage
 
 

@@ -18,10 +18,6 @@ app.config(['$routeProvider', function($routeProvider){
 			}
 		}
 	})
-	.when('/loginToGame/:gameName', {
-		templateUrl: 'views/creategame/loginToGame.html',
-		controller: 'creategameCtrl'
-	})
 	.when('/joingames', {
 		templateUrl: 'views/joingame/joingames.html',
 		controller: 'joingamesCtrl'
