@@ -5,7 +5,7 @@
 			<h2>Player</h2>
 			<strong>{{userName}}</strong><br>
 			<img src={{userImage}}>
-			<br><a>Logout</a>
+			<!-- <br><a>Logout</a> -->
 			<p></p>
 		</div>
 
@@ -17,9 +17,9 @@
 			<h2>Create New Game</h2>
 			<form>
 				<input class='create-game-input'ng-model="gameTitle" placeholder="Game title"></input> 
-				<input class='create-game-input' ng-show="passwordInput" placeholder="Add a password" ng-model="password"></input>
+				<!-- <input class='create-game-input' ng-show="passwordInput" placeholder="Add a password" ng-model="password"></input> -->
 				<button class='add-game-button'ng-click='addToGameArray()'>Create Game</button>
-				<button class='add-game-button' ng-click="passwordInputShow()">Add Password</button>
+				<!-- <button class='add-game-button' ng-click="passwordInputShow()">Add Password</button> -->
 
 			</form>
 		</div>
