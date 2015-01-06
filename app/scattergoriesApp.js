@@ -39,6 +39,12 @@ app.config(['$routeProvider', function($routeProvider){
 		resolve: {
 			gameList: function(playerService) {
 				return playerService.getGameList();
+			},
+			userName: function(playerService){
+				return playerService.getUserName();
+			},
+			userImage: function(playerService){
+				return playerService.getUserImage();
 			}
 		}
 	})
