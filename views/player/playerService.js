@@ -22,7 +22,9 @@ app.service('playerService', function ($firebase, $q){
 
 	//used to display username on appropriate pages
 	this.getUserName = function() {
+		
 		return username;
+
 	}
 	//used to display user image on appropriate pages
 	this.getUserImage = function() {

@@ -15,7 +15,7 @@ app.service('loginService', function($firebase, $q, $location){
 				} else if(authData) {
 					user = {};
 					deferred.resolve(authData);
-					console.log("Login Succeeded!", authData);
+					//console.log("Login Succeeded!", authData);
 						
 					newF.child('users').child(authData.uid.replace('google:', '')).set(authData);
 				//i tested setting the user to object.property.property.property- but Firebase wouldn't take it			

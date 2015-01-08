@@ -1,6 +1,7 @@
 html{
 	
 	border: 40px solid black;
+	border-bottom: 0px;
 	height:100%;
 	
 }

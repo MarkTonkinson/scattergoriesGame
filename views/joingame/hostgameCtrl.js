@@ -11,16 +11,6 @@ app.controller('hostgameCtrl', function($scope, $location, playerService, $fireb
 	//display username on page for them
 	$scope.playerName = playerService.getUserName();
 
-	//this generates a random letter - i could put this in the startgame
-	$scope.generateLetter = function() { //now how do I make this so that the letter transfers to the player view when the start game is clicked?- this should really be in join game or maybe a service?  Would the random number run for every player?  Quite possibly . . .
-		var alphabet = ['A','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','Y'];
-		var randomNum = function(){
-			return Math.floor(Math.random()*(24 - 1 + 1) + 1);
-		}
-		$scope.displayLetter = alphabet[randomNum()];
-		$scope.chatMessage.text = $scope.displayLetter;
-		$scope.addChat()
-	}
 
 
 	//this grabs the user info from the service

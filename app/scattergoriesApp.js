@@ -15,12 +15,21 @@ app.config(['$routeProvider', function($routeProvider){
 		resolve: {
 			gameList: function(playerService) {
 				return playerService.getGameList();
+			},
+			playerData: function(playerService){
+				return playerService.getData()
 			}
 		}
 	})
 	.when('/game/:gameTitle', {
 		templateUrl: 'views/joingame/hostgame.html', 
-		controller: 'hostgameCtrl'
+		controller: 'hostgameCtrl',
+		resolve: {
+			playerData: function(playerService){
+				return playerService.getData()
+			}
+		}
+
 		
 	})
 	//this became the home view- refactor to name appropriately

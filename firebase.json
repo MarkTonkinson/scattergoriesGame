@@ -1,0 +1,9 @@
+{
+  "firebase": "mtscattergories",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

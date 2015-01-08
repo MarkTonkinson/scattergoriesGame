@@ -4,12 +4,12 @@
 		<u><strong>{{userName}}</strong></u>
 		<p><img src={{userImage}}></p>
 
-		<timer interval="1000" countdown="120">{{countdown}}</timer>
+		<h4>Game Letter: {{currentGame.gameLetter}}</h4>
+		<h4>Time Left: <timer interval="1000" countdown="120">{{countdown}}</timer></h4>
 		
-
-
-
         <button ng-click="submitPlayerAnswers()">Submit Answers</button>
+
+
 	</div>
 
 	<div class='col-md-5'>

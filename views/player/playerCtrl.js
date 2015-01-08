@@ -16,35 +16,7 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 	$scope.userName = playerService.getUserName();
 	$scope.userImage = playerService.getUserImage();
 
-
-
-	//allows player to see chosen list
-		$scope.gameQuestions14 = $firebase(new Firebase(firebaseUrl + 'List14')).$asArray();
-		$scope.gameQuestions13 = $firebase(new Firebase(firebaseUrl + 'List13')).$asArray();
-		
-		//show and hide lists
-		$scope.showList14 = false;
-		$scope.showList13 = false;
-
-
-		//this hides and shows lists and sets them to a variable
-		$scope.setGameList = function(){
-			if($scope.showList13 === true){
-				$scope.chosenGameList = 'List13';
-				// $firebase(new Firebase(firebaseUrl + 'List13')).$asArray().$loaded();
-			}
-			else if($scope.showList14 === true) {
-				$scope.chosenGameList = 'List14';
-				// $firebase(new Firebase(firebaseUrl+'List14')).$asArray().$loaded();
-			}
-			return $scope.chosenGameList;
-		}		
-	
-	
-	
-
-
-	$scope.answers = {
+		$scope.answers = {
 		a: playerService.getUserName()
 	}
 	
@@ -91,6 +63,37 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
 								
 				return lettersOnly.join('');
 		}
+		
+
+		$scope.currentGame = $firebase(new Firebase(firebaseUrl + 'games/' + $scope.grabGameId().replace('game', ''))).$asObject();
+
+	//allows player to see chosen list
+		$scope.gameQuestions14 = $firebase(new Firebase(firebaseUrl + 'List14')).$asArray();
+		$scope.gameQuestions13 = $firebase(new Firebase(firebaseUrl + 'List13')).$asArray();
+		
+		//show and hide lists
+		$scope.showList14 = false;
+		$scope.showList13 = false;
+
+
+		//this hides and shows lists and sets them to a variable
+		$scope.setGameList = function(){
+			if($scope.showList13 === true){
+				$scope.chosenGameList = 'List13';
+				// $firebase(new Firebase(firebaseUrl + 'List13')).$asArray().$loaded();
+			}
+			else if($scope.showList14 === true) {
+				$scope.chosenGameList = 'List14';
+				// $firebase(new Firebase(firebaseUrl+'List14')).$asArray().$loaded();
+			}
+			return $scope.chosenGameList;
+		}		
+	
+	
+	
+
+
+
 
 		
         $scope.submitPlayerAnswers = function() {
@@ -107,7 +110,7 @@ app.controller('playerCtrl', function($scope, gameList, $firebase, $location, pl
   			var list = $firebase(ref).$asArray();
   			
 			list.$add($scope.answers);
-			debugger;
+	
 			$location.path('/compare' + correctPath);//remove later	
         	
         }

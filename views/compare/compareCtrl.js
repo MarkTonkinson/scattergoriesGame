@@ -33,7 +33,7 @@ app.controller('compareCtrl', function($scope, playerService, $firebase, $locati
   	var ref = new Firebase("https://mtscattergories.firebaseio.com/" + gameId);
     var list = $firebase(ref).$asObject();
     $scope.answers = list;
-    console.log($scope.answers);
+   
 
   
    
@@ -72,7 +72,7 @@ app.controller('compareCtrl', function($scope, playerService, $firebase, $locati
     var chatLocation = $location.$$path.replace('/compare/game/','');
     
     $scope.chats = $firebase(new Firebase(firebaseUrl + chatLocation)).$asObject();
-    console.log($scope.chats);
+   
   }
   $scope.getChat();
 

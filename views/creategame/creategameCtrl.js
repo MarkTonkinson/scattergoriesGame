@@ -20,6 +20,14 @@ app.controller('creategameCtrl', function($scope, $location, playerData, playerS
 		
 		$scope.addToGameArray = function() {
 			
+			var generateLetter = function() { //now how do I make this so that the letter transfers to the player view when the start game is clicked?- this should really be in join game or maybe a service?  Would the random number run for every player?  Quite possibly . . .
+				var alphabet = ['A','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','Y'];
+				var randomNum = function(){
+					return Math.floor(Math.random()*(24 - 1 + 1) + 1);
+				}
+				return alphabet[randomNum()];
+			}
+
 			if($scope.password) {
 				var pword = $scope.password;				
 			} else{
@@ -27,7 +35,8 @@ app.controller('creategameCtrl', function($scope, $location, playerData, playerS
 			}
 			var newGameObj = {
 				gameName: $scope.gameTitle,
-				gamePassword: pword
+				gamePassword: pword,
+				gameLetter: generateLetter()
 			}
 			
 			
