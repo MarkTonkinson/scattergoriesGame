@@ -1,10 +1,10 @@
 var app = angular.module('scattergoriesApp');
 
-app.controller('loginCtrl', function($scope, loginService, $location){
+app.controller('loginCtrl', function($scope, loginService, playerService, $location){
 
 	$scope.login = function(){
 		loginService.firebaseLogin().then(function(data){
-			console.log(data);
+			playerService.getData()
 			$location.path('/create');
 		});
 	}

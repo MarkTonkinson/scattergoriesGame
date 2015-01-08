@@ -18,33 +18,18 @@ app.config(['$routeProvider', function($routeProvider){
 			}
 		}
 	})
-	.when('/joingames', {
-		templateUrl: 'views/joingame/joingames.html',
-		controller: 'joingamesCtrl'
-		// resolve: {
-		// 	joingameRef: function(creategameService, $route) {
-		// 		return creategameService.addGameToJoin($route.current.params.gameTitle); //this grabs the route param when it gets to the page
-		// 	}
-		// }
-
-	})
 	.when('/game/:gameTitle', {
 		templateUrl: 'views/joingame/hostgame.html', 
 		controller: 'hostgameCtrl'
 		
 	})
+	//this became the home view- refactor to name appropriately
 	.when('/create', {
 		templateUrl: 'views/creategame/creategameview.html',
 		controller: 'creategameCtrl',
 		resolve: {
-			gameList: function(playerService) {
-				return playerService.getGameList();
-			},
-			userName: function(playerService){
-				return playerService.getUserName();
-			},
-			userImage: function(playerService){
-				return playerService.getUserImage();
+			playerData: function(playerService){
+				return playerService.getData()
 			}
 		}
 	})

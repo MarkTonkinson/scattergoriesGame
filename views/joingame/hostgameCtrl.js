@@ -18,7 +18,8 @@ app.controller('hostgameCtrl', function($scope, $location, playerService, $fireb
 			return Math.floor(Math.random()*(24 - 1 + 1) + 1);
 		}
 		$scope.displayLetter = alphabet[randomNum()];
-		
+		$scope.chatMessage.text = $scope.displayLetter;
+		$scope.addChat()
 	}
 
 
